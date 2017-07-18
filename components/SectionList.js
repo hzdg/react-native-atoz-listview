@@ -73,7 +73,7 @@ export default class SectionList extends Component {
     this.fixSectionItemMeasure();
   }
 
-  // fix bug when change data 
+  // fix bug when change data
   componentDidUpdate() {
     this.fixSectionItemMeasure();
   }
@@ -100,7 +100,7 @@ export default class SectionList extends Component {
         /> :
         <View
           style={styles.item}>
-          <Text style={textStyle}>{title}</Text>
+          <Text style={[textStyle, this.props.fontStyle]}>{title}</Text>
         </View>;
 
       return (
@@ -152,14 +152,22 @@ SectionList.propTypes = {
   style: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.object,
-  ])
+  ]),
+
+  /**
+   * Text font size
+   */
+  fontStyle: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.object,
+  ]),
 };
 
 const styles = StyleSheet.create({
   container: {
     position: 'absolute',
-    backgroundColor: '#fff',
-    alignItems: 'flex-end',
+    backgroundColor: 'transparent',
+    alignItems: 'center',
     justifyContent: 'center',
     right: 0,
     top: 0,
@@ -171,14 +179,12 @@ const styles = StyleSheet.create({
   },
 
   text: {
-    fontSize: 12,
-    fontWeight: '400',
-    color: '#0173fa'
+    fontWeight: '700',
+    color: '#008fff'
   },
 
   inactivetext: {
-    fontSize: 12,
-    fontWeight: '400',
+    fontWeight: '700',
     color: '#ccc'
   }
 });
